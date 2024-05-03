@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
+            'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            text-align: center;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body onload="clock()">
+    <h1 id="box">05:10:30</h1>
+    <script>
+        var box=document.querySelector("#box");
+        function clock(){
+            var date=new Date();
+            var hrs=date.getHours();
+            var phase="AM";
+            if(hrs>12){
+                phase="PM";
+                hrs=hrs-12;
+            }
+            if(hrs<10){
+                hrs="0"+hrs;
+            }
+            var min=date.getMinutes();
+            var sec=date.getSeconds();
+            if(min<10){
+                min="0"+min;
+            }
+            if(sec<10){
+                sec="0"+sec;
+            }
+            // box.innerHTML=`${hrs}:${min}:${sec}:${phase}`;
+            box.innerHTML=date.toLocaleTimeString();
+        }
+        setInterval(clock,1000);
+    </script>
+</body>
+</html>
